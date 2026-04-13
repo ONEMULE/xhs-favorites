@@ -1,0 +1,22 @@
+{
+  "name": "xhs-favorites",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Persistent-profile XiaoHongShu favorites CLI and MCP server built on Playwright.",
+  "bin": {
+    "xhs-favorites": "./src/cli.js",
+    "xhs-favorites-mcp": "./src/mcp.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "doctor": "node ./src/cli.js doctor",
+    "login": "node ./src/cli.js login",
+    "start:mcp": "node ./src/mcp.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "playwright": "1.59.1",
+    "zod": "4.3.6"
+  }
+}
