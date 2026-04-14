@@ -29,12 +29,27 @@ xhs-favorites doctor --pretty
 xhs-favorites list-notes --limit 10 --pretty
 ```
 
-If you want to wire it into Codex as an MCP server:
+If you want to wire it into an MCP client, use `xhs-favorites-mcp` as the command. This binary is meant to be launched by an MCP client over stdio. It is not an interactive shell command.
+
+### Codex MCP snippet
 
 ```toml
 [mcp_servers.xhs_favorites]
 command = "xhs-favorites-mcp"
 args = []
+```
+
+### Claude Desktop MCP snippet
+
+```json
+{
+  "mcpServers": {
+    "xhs-favorites": {
+      "command": "xhs-favorites-mcp",
+      "args": []
+    }
+  }
+}
 ```
 
 ## Project Links
@@ -82,8 +97,10 @@ After install, the commands should be available globally:
 
 ```bash
 xhs-favorites --help
-xhs-favorites-mcp
+which xhs-favorites-mcp
 ```
+
+`xhs-favorites-mcp` is the MCP server entrypoint. It is expected to be launched by Codex, Claude Desktop, or another MCP client, not run manually in a normal terminal session.
 
 ### Local clone
 
@@ -236,12 +253,6 @@ Typical files:
 
 ## MCP Wiring
 
-### Start locally
-
-```bash
-xhs-favorites-mcp
-```
-
 ### Codex configuration
 
 Add this to `~/.codex/config.toml`:
@@ -253,6 +264,42 @@ args = []
 ```
 
 Then restart or reload your Codex client session if needed.
+
+### Claude Desktop configuration
+
+Add this to your Claude Desktop MCP config:
+
+- macOS:
+  `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows:
+  `%APPDATA%\\Claude\\claude_desktop_config.json`
+
+Example:
+
+```json
+{
+  "mcpServers": {
+    "xhs-favorites": {
+      "command": "xhs-favorites-mcp",
+      "args": []
+    }
+  }
+}
+```
+
+Then fully restart Claude Desktop.
+
+### MCP install troubleshooting
+
+If your MCP client cannot find `xhs-favorites-mcp`, use an absolute command path instead of relying on `PATH`.
+
+You can discover the path with:
+
+```bash
+which xhs-favorites-mcp
+```
+
+Then use that full path in your client config.
 
 ### Exposed MCP tools
 
@@ -301,48 +348,22 @@ This tool intentionally prefers `window.__INITIAL_STATE__` where possible, but X
 
 If `git push` over SSH times out, but `gh` still works, the problem is usually the machine's SSH path to GitHub rather than the repository itself.
 
-## How To Share This With Other Users
+## Distribution Status
 
-The simplest rollout path is:
+The project is already available through all three primary public entrypoints:
 
-1. Make the GitHub repository public.
-2. Keep the README focused on source install plus MCP wiring.
-3. Let users either clone the repo or install directly from GitHub:
+- npm package:
+  `https://www.npmjs.com/package/xhs-favorites`
+- GitHub repository:
+  `https://github.com/ONEMULE/xhs-favorites`
+- GitHub release:
+  `https://github.com/ONEMULE/xhs-favorites/releases/tag/v0.1.0`
+
+For most users, npm is the recommended install path:
 
 ```bash
-npm install -g github:ONEMULE/xhs-favorites
+npm install -g xhs-favorites
 ```
-
-If you want a cleaner user experience after that, the next steps are:
-
-### Option A: GitHub-only distribution
-
-Best if the audience is technical.
-
-- Keep the repo public.
-- Add a GitHub Release when you cut a stable version.
-- Put a short install block at the top of the README.
-
-### Option B: npm distribution
-
-Best if you want one-line installs such as `npm install -g xhs-favorites`.
-
-Before publishing:
-
-- choose and add a real license
-- remove `"private": true` from `package.json`
-- verify package contents with `npm pack`
-- publish with `npm publish`
-
-### Option C: bundled desktop-friendly release
-
-Best if the audience is less technical.
-
-- ship a small install script
-- or package a standalone runner for macOS
-- keep MCP as the advanced path and CLI as the default path
-
-Right now, the project is already in a good state for **GitHub repo distribution**. npm distribution is the logical next step once you decide on a license and want a stable public package name.
 
 ## Development
 
