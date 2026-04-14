@@ -19,6 +19,7 @@ Persistent-profile XiaoHongShu favorites tooling built on Playwright.
 
 ```bash
 npm install -g xhs-favorites
+xhs-favorites --version
 ```
 
 ## Fast Start
@@ -64,9 +65,11 @@ Review bundle HTML:
 - GitHub: https://github.com/ONEMULE/xhs-favorites
 - Release notes: https://github.com/ONEMULE/xhs-favorites/releases/latest
 - Issues: https://github.com/ONEMULE/xhs-favorites/issues
-- Codex setup guide: [docs/codex.md](./docs/codex.md)
-- Claude Desktop setup guide: [docs/claude-desktop.md](./docs/claude-desktop.md)
-- Troubleshooting guide: [docs/troubleshooting.md](./docs/troubleshooting.md)
+- Codex setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/codex.md
+- Claude Desktop setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/claude-desktop.md
+- Troubleshooting guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/troubleshooting.md
+- FAQ: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/faq.md
+- Release guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/releasing.md
 
 ## What It Provides
 
@@ -105,6 +108,7 @@ npm install -g xhs-favorites
 After install, the commands should be available globally:
 
 ```bash
+xhs-favorites --version
 xhs-favorites --help
 which xhs-favorites-mcp
 ```
@@ -380,11 +384,12 @@ npm install -g xhs-favorites
 
 ```bash
 npm test
+npm run release:check
 ```
 
 See also:
 
-- [CHANGELOG.md](./CHANGELOG.md)
-- [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [SECURITY.md](./SECURITY.md)
-- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+- [CHANGELOG.md](https://github.com/ONEMULE/xhs-favorites/blob/main/CHANGELOG.md)
+- [CONTRIBUTING.md](https://github.com/ONEMULE/xhs-favorites/blob/main/CONTRIBUTING.md)
+- [SECURITY.md](https://github.com/ONEMULE/xhs-favorites/blob/main/SECURITY.md)
+- [CODE_OF_CONDUCT.md](https://github.com/ONEMULE/xhs-favorites/blob/main/CODE_OF_CONDUCT.md)

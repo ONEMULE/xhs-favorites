@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { parseArgs } from "node:util";
+import packageJson from "../package.json" with { type: "json" };
 import { exportReviewBundle } from "./export.js";
 import {
   doctor,
@@ -13,7 +14,7 @@ import {
 import { printError, printJson } from "./output.js";
 
 function helpText() {
-  return `xhs-favorites
+  return `xhs-favorites v${packageJson.version}
 
 Commands:
   login [--channel chrome]
@@ -46,6 +47,11 @@ async function main() {
 
   if (!command || command === "help" || command === "--help" || command === "-h") {
     process.stdout.write(`${helpText()}\n`);
+    return;
+  }
+
+  if (command === "--version" || command === "-v" || command === "version") {
+    process.stdout.write(`${packageJson.version}\n`);
     return;
   }
 

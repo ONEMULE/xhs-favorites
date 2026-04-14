@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.1.2 - 2026-04-14
+
+Productization enhancement release.
+
+### Added
+
+- FAQ document.
+- Maintainer release guide.
+- Release GitHub Actions workflow.
+- CLI `--version` support.
+
+### Changed
+
+- README links now point to public GitHub docs pages.
+- README more clearly explains Codex and Claude MCP wiring.
+- Release process is now documented and partially automated.
+
 ## v0.1.1 - 2026-04-14
 
 Public polish release.
