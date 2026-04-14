@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.1.3 - 2026-04-15
+
+Installation and onboarding release.
+
+### Added
+
+- `xhs-favorites bootstrap` command.
+- End-to-end installation guide with terminal-first setup steps.
+- Config writers for Codex and Claude Desktop MCP setup.
+
+### Changed
+
+- README now includes more complete environment preparation guidance.
+- Install flow is simpler for new users after the npm package is available.
+
 ## v0.1.2 - 2026-04-14
 
 Productization enhancement release.

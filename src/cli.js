@@ -2,6 +2,7 @@
 
 import { parseArgs } from "node:util";
 import packageJson from "../package.json" with { type: "json" };
+import { bootstrap } from "./bootstrap.js";
 import { exportReviewBundle } from "./export.js";
 import {
   doctor,
@@ -17,6 +18,7 @@ function helpText() {
   return `xhs-favorites v${packageJson.version}
 
 Commands:
+  bootstrap [--client codex|claude|both|none] [--browser chromium] [--with-deps] [--skip-browser-install] [--pretty]
   login [--channel chrome]
   doctor [--headless] [--channel chrome] [--pretty]
   list-notes [--limit 20] [--scroll 25] [--headless] [--channel chrome] [--pretty]
@@ -65,6 +67,23 @@ async function main() {
         pretty = parsed.values.pretty;
         payload = await login({
           channel: parsed.values.channel
+        });
+        break;
+      }
+
+      case "bootstrap": {
+        const parsed = parseCommon(rest, {
+          client: { type: "string" },
+          browser: { type: "string" },
+          "with-deps": { type: "boolean", default: false },
+          "skip-browser-install": { type: "boolean", default: false }
+        });
+        pretty = parsed.values.pretty;
+        payload = bootstrap({
+          client: parsed.values.client,
+          browser: parsed.values.browser,
+          withDeps: parsed.values["with-deps"],
+          skipBrowserInstall: parsed.values["skip-browser-install"]
         });
         break;
       }

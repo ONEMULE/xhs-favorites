@@ -25,6 +25,7 @@ xhs-favorites --version
 ## Fast Start
 
 ```bash
+xhs-favorites bootstrap --client codex --pretty
 xhs-favorites login
 xhs-favorites doctor --pretty
 xhs-favorites list-notes --limit 10 --pretty
@@ -65,6 +66,7 @@ Review bundle HTML:
 - GitHub: https://github.com/ONEMULE/xhs-favorites
 - Release notes: https://github.com/ONEMULE/xhs-favorites/releases/latest
 - Issues: https://github.com/ONEMULE/xhs-favorites/issues
+- Install guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/install.md
 - Codex setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/codex.md
 - Claude Desktop setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/claude-desktop.md
 - Troubleshooting guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/troubleshooting.md
@@ -103,6 +105,7 @@ This is the primary distribution path:
 
 ```bash
 npm install -g xhs-favorites
+xhs-favorites bootstrap --client codex --pretty
 ```
 
 After install, the commands should be available globally:
@@ -121,6 +124,7 @@ which xhs-favorites-mcp
 git clone git@github.com:ONEMULE/xhs-favorites.git
 cd xhs-favorites
 npm install
+node ./src/cli.js bootstrap --client codex --pretty
 ```
 
 ### Global install from GitHub
@@ -148,6 +152,7 @@ This matters because:
 ## Quick Start
 
 ```bash
+xhs-favorites bootstrap --client codex --pretty
 xhs-favorites login
 xhs-favorites doctor --pretty
 xhs-favorites list-notes --limit 10 --pretty

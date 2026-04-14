@@ -1,6 +1,6 @@
 {
   "name": "xhs-favorites",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "description": "Persistent-profile XiaoHongShu favorites CLI and MCP server built on Playwright.",
   "author": "ONEMULE",
@@ -29,7 +29,8 @@
     "LICENSE",
     "CHANGELOG.md",
     "SECURITY.md",
-    "CODE_OF_CONDUCT.md"
+    "CODE_OF_CONDUCT.md",
+    "docs/install.md"
   ],
   "bin": {
     "xhs-favorites": "src/cli.js",
