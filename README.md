@@ -9,6 +9,28 @@ Persistent-profile XiaoHongShu favorites tooling built on Playwright.
 - `xhs-favorites-mcp`
   MCP server exposing the same capabilities over stdio for Codex or other MCP clients.
 
+## Install from npm
+
+```bash
+npm install -g xhs-favorites
+```
+
+## Fast Start
+
+```bash
+xhs-favorites login
+xhs-favorites doctor --pretty
+xhs-favorites list-notes --limit 10 --pretty
+```
+
+If you want to wire it into Codex as an MCP server:
+
+```toml
+[mcp_servers.xhs_favorites]
+command = "xhs-favorites-mcp"
+args = []
+```
+
 ## What It Provides
 
 - Dedicated persistent browser profile
@@ -35,20 +57,20 @@ Persistent-profile XiaoHongShu favorites tooling built on Playwright.
 
 ## Install
 
+### Install from npm
+
+This is the primary distribution path:
+
+```bash
+npm install -g xhs-favorites
+```
+
 ### Local clone
 
 ```bash
 git clone git@github.com:ONEMULE/xhs-favorites.git
 cd xhs-favorites
 npm install
-```
-
-### Install from npm
-
-Once published, users can install it directly:
-
-```bash
-npm install -g xhs-favorites
 ```
 
 ### Global install from GitHub
@@ -76,10 +98,9 @@ This matters because:
 ## Quick Start
 
 ```bash
-npm install
-node ./src/cli.js login
-node ./src/cli.js doctor --pretty
-node ./src/cli.js list-notes --limit 10 --pretty
+xhs-favorites login
+xhs-favorites doctor --pretty
+xhs-favorites list-notes --limit 10 --pretty
 ```
 
 The `login` command opens a real browser using the official Playwright CLI. After you finish logging into XiaoHongShu and close that browser window, the profile is persisted and later commands can reuse it.
@@ -91,8 +112,8 @@ The `login` command opens a real browser using the official Playwright CLI. Afte
 Open a real browser and persist the session into the dedicated Playwright profile.
 
 ```bash
-node ./src/cli.js login
-node ./src/cli.js login --channel chrome
+xhs-favorites login
+xhs-favorites login --channel chrome
 ```
 
 ### `doctor`
@@ -100,8 +121,8 @@ node ./src/cli.js login --channel chrome
 Check whether the profile is logged in, blocked by risk control, or missing authentication.
 
 ```bash
-node ./src/cli.js doctor --pretty
-node ./src/cli.js doctor --headless --pretty
+xhs-favorites doctor --pretty
+xhs-favorites doctor --headless --pretty
 ```
 
 Typical result:
@@ -122,8 +143,8 @@ Typical result:
 Read the main favorites feed.
 
 ```bash
-node ./src/cli.js list-notes --limit 10 --pretty
-node ./src/cli.js list-notes --headless --limit 50 --scroll 80 --pretty
+xhs-favorites list-notes --limit 10 --pretty
+xhs-favorites list-notes --headless --limit 50 --scroll 80 --pretty
 ```
 
 ### `list-boards`
@@ -131,7 +152,7 @@ node ./src/cli.js list-notes --headless --limit 50 --scroll 80 --pretty
 Read favorite boards.
 
 ```bash
-node ./src/cli.js list-boards --pretty
+xhs-favorites list-boards --pretty
 ```
 
 ### `list-board-items`
@@ -139,8 +160,8 @@ node ./src/cli.js list-boards --pretty
 Read notes inside a specific board.
 
 ```bash
-node ./src/cli.js list-board-items --board-id 683f2dd7000000002300522c --limit 20 --pretty
-node ./src/cli.js list-board-items --url "https://www.xiaohongshu.com/board/<board_id>" --pretty
+xhs-favorites list-board-items --board-id 683f2dd7000000002300522c --limit 20 --pretty
+xhs-favorites list-board-items --url "https://www.xiaohongshu.com/board/<board_id>" --pretty
 ```
 
 ### `note-detail`
@@ -148,8 +169,8 @@ node ./src/cli.js list-board-items --url "https://www.xiaohongshu.com/board/<boa
 Read one note in detail using an authenticated session.
 
 ```bash
-node ./src/cli.js note-detail --url "https://www.xiaohongshu.com/discovery/item/<note_id>?xsec_token=..." --pretty
-node ./src/cli.js note-detail --note-id <note_id> --xsec-token <token> --pretty
+xhs-favorites note-detail --url "https://www.xiaohongshu.com/discovery/item/<note_id>?xsec_token=..." --pretty
+xhs-favorites note-detail --note-id <note_id> --xsec-token <token> --pretty
 ```
 
 ### `export-review`
@@ -157,7 +178,7 @@ node ./src/cli.js note-detail --note-id <note_id> --xsec-token <token> --pretty
 Export a review bundle for large-scale manual triage.
 
 ```bash
-node ./src/cli.js export-review --headless --pretty
+xhs-favorites export-review --headless --pretty
 ```
 
 This command writes:
@@ -198,7 +219,7 @@ Typical files:
 ### Start locally
 
 ```bash
-npm run start:mcp
+xhs-favorites-mcp
 ```
 
 ### Codex configuration
@@ -207,8 +228,8 @@ Add this to `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.xhs_favorites]
-command = "node"
-args = ["/Users/luoxin/Projects/xhs-favorites/src/mcp.js"]
+command = "xhs-favorites-mcp"
+args = []
 ```
 
 Then restart or reload your Codex client session if needed.
@@ -231,7 +252,7 @@ This means the dedicated profile is not logged in or the session expired.
 Fix:
 
 ```bash
-node ./src/cli.js login
+xhs-favorites login
 ```
 
 ### `RISK_CONTROLLED`
