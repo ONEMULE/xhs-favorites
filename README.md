@@ -1,5 +1,11 @@
 # xhs-favorites
 
+[![npm version](https://img.shields.io/npm/v/xhs-favorites)](https://www.npmjs.com/package/xhs-favorites)
+[![npm downloads](https://img.shields.io/npm/dm/xhs-favorites)](https://www.npmjs.com/package/xhs-favorites)
+[![GitHub release](https://img.shields.io/github/v/release/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/releases/tag/v0.1.0)
+[![CI](https://img.shields.io/github/actions/workflow/status/ONEMULE/xhs-favorites/ci.yml?branch=main)](https://github.com/ONEMULE/xhs-favorites/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/blob/main/LICENSE)
+
 Persistent-profile XiaoHongShu favorites tooling built on Playwright.
 
 `xhs-favorites` is a small toolchain for reading your own XiaoHongShu saved notes and favorite boards with a dedicated Playwright browser profile. It has two entrypoints:
@@ -30,6 +36,13 @@ If you want to wire it into Codex as an MCP server:
 command = "xhs-favorites-mcp"
 args = []
 ```
+
+## Project Links
+
+- npm: https://www.npmjs.com/package/xhs-favorites
+- GitHub: https://github.com/ONEMULE/xhs-favorites
+- Release notes: https://github.com/ONEMULE/xhs-favorites/releases/tag/v0.1.0
+- Issues: https://github.com/ONEMULE/xhs-favorites/issues
 
 ## What It Provides
 
@@ -63,6 +76,13 @@ This is the primary distribution path:
 
 ```bash
 npm install -g xhs-favorites
+```
+
+After install, the commands should be available globally:
+
+```bash
+xhs-favorites --help
+xhs-favorites-mcp
 ```
 
 ### Local clone
@@ -329,3 +349,8 @@ Right now, the project is already in a good state for **GitHub repo distribution
 ```bash
 npm test
 ```
+
+See also:
+
+- [CHANGELOG.md](./CHANGELOG.md)
+- [CONTRIBUTING.md](./CONTRIBUTING.md)

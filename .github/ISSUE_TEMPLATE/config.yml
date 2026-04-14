@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: npm package
+    url: https://www.npmjs.com/package/xhs-favorites
+    about: Check the published package and install instructions.
+  - name: Release notes
+    url: https://github.com/ONEMULE/xhs-favorites/releases
+    about: Review release notes before filing an issue.
