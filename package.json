@@ -4,6 +4,24 @@
   "private": true,
   "type": "module",
   "description": "Persistent-profile XiaoHongShu favorites CLI and MCP server built on Playwright.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ONEMULE/xhs-favorites.git"
+  },
+  "homepage": "https://github.com/ONEMULE/xhs-favorites#readme",
+  "bugs": {
+    "url": "https://github.com/ONEMULE/xhs-favorites/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "xiaohongshu",
+    "rednote",
+    "playwright",
+    "mcp",
+    "favorites"
+  ],
   "bin": {
     "xhs-favorites": "./src/cli.js",
     "xhs-favorites-mcp": "./src/mcp.js"
