@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/xhs-favorites)](https://www.npmjs.com/package/xhs-favorites)
 [![npm downloads](https://img.shields.io/npm/dm/xhs-favorites)](https://www.npmjs.com/package/xhs-favorites)
-[![GitHub release](https://img.shields.io/github/v/release/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/releases/tag/v0.1.0)
+[![GitHub release](https://img.shields.io/github/v/release/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/releases/latest)
 [![CI](https://img.shields.io/github/actions/workflow/status/ONEMULE/xhs-favorites/ci.yml?branch=main)](https://github.com/ONEMULE/xhs-favorites/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/blob/main/LICENSE)
 
@@ -52,12 +52,21 @@ args = []
 }
 ```
 
+## Screenshots
+
+Review bundle HTML:
+
+![Review bundle screenshot](./docs/assets/review-dashboard.jpg)
+
 ## Project Links
 
 - npm: https://www.npmjs.com/package/xhs-favorites
 - GitHub: https://github.com/ONEMULE/xhs-favorites
-- Release notes: https://github.com/ONEMULE/xhs-favorites/releases/tag/v0.1.0
+- Release notes: https://github.com/ONEMULE/xhs-favorites/releases/latest
 - Issues: https://github.com/ONEMULE/xhs-favorites/issues
+- Codex setup guide: [docs/codex.md](./docs/codex.md)
+- Claude Desktop setup guide: [docs/claude-desktop.md](./docs/claude-desktop.md)
+- Troubleshooting guide: [docs/troubleshooting.md](./docs/troubleshooting.md)
 
 ## What It Provides
 
@@ -348,6 +357,8 @@ This tool intentionally prefers `window.__INITIAL_STATE__` where possible, but X
 
 If `git push` over SSH times out, but `gh` still works, the problem is usually the machine's SSH path to GitHub rather than the repository itself.
 
+For a fuller troubleshooting guide, see [docs/troubleshooting.md](./docs/troubleshooting.md).
+
 ## Distribution Status
 
 The project is already available through all three primary public entrypoints:
@@ -375,3 +386,5 @@ See also:
 
 - [CHANGELOG.md](./CHANGELOG.md)
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [SECURITY.md](./SECURITY.md)
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)

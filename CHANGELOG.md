@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.1.1 - 2026-04-14
+
+Public polish release.
+
+### Added
+
+- Codex-specific setup guide.
+- Claude Desktop-specific setup guide.
+- Dedicated troubleshooting guide.
+- Security policy.
+- Code of conduct.
+- GitHub issue and pull request templates.
+- GitHub Actions CI workflow.
+- Review bundle screenshot in the README.
+
+### Changed
+
+- README now leads with npm installation and global command usage.
+- MCP setup instructions are clearer for both Codex and Claude Desktop.
+- Repository is now aligned as a public npm + GitHub tool project.
+
 ## v0.1.0 - 2026-04-14
 
 Initial public release.
