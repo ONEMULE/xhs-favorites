@@ -43,15 +43,21 @@ cd xhs-favorites
 npm install
 ```
 
-### Global install from a public GitHub repo
+### Install from npm
 
-If the repository is public, users can install it directly:
+Once published, users can install it directly:
+
+```bash
+npm install -g xhs-favorites
+```
+
+### Global install from GitHub
+
+If you want to use the latest GitHub version directly:
 
 ```bash
 npm install -g github:ONEMULE/xhs-favorites
 ```
-
-If the repository stays private, users need direct repository access or should clone it locally and run it from source.
 
 ## Session Model
 
