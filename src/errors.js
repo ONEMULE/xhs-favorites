@@ -5,6 +5,10 @@ export const ErrorCodes = Object.freeze({
   SELECTOR_CHANGED: "SELECTOR_CHANGED",
   NAVIGATION_TIMEOUT: "NAVIGATION_TIMEOUT",
   INVALID_INPUT: "INVALID_INPUT",
+  CAPABILITY_UNAVAILABLE: "CAPABILITY_UNAVAILABLE",
+  PUBLISH_FLOW_BLOCKED: "PUBLISH_FLOW_BLOCKED",
+  CREATOR_CENTER_UNAVAILABLE: "CREATOR_CENTER_UNAVAILABLE",
+  AUTH_STATE_MISMATCH: "AUTH_STATE_MISMATCH",
   UNKNOWN: "UNKNOWN"
 });
 
@@ -51,6 +55,14 @@ export function exitCodeForError(error) {
       return 25;
     case ErrorCodes.INVALID_INPUT:
       return 26;
+    case ErrorCodes.CAPABILITY_UNAVAILABLE:
+      return 27;
+    case ErrorCodes.PUBLISH_FLOW_BLOCKED:
+      return 28;
+    case ErrorCodes.CREATOR_CENTER_UNAVAILABLE:
+      return 29;
+    case ErrorCodes.AUTH_STATE_MISMATCH:
+      return 30;
     default:
       return 1;
   }

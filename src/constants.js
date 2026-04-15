@@ -9,6 +9,10 @@ export const DIAGNOSTICS_DIR = path.join(APP_HOME, "diagnostics");
 
 export const XHS_EXPLORE_URL = "https://www.xiaohongshu.com/explore";
 export const XHS_HOST = "https://www.xiaohongshu.com";
+export const XHS_CREATOR_PUBLISH_URL = "https://creator.xiaohongshu.com/publish/publish?source=official";
+export const XHS_CREATOR_DASHBOARD_URL = "https://creator.xiaohongshu.com/new/home";
+export const XHS_CREATOR_CONTENT_URL = "https://creator.xiaohongshu.com/statistics/data-analysis";
+export const XHS_CREATOR_FANS_URL = "https://creator.xiaohongshu.com/creator/fans";
 export const DEFAULT_LIMIT = 20;
 export const DEFAULT_SCROLL_ITERATIONS = 25;
 export const DEFAULT_TIMEOUT_MS = 60_000;

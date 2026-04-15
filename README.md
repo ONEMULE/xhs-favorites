@@ -6,9 +6,16 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/ONEMULE/xhs-favorites/ci.yml?branch=main)](https://github.com/ONEMULE/xhs-favorites/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/ONEMULE/xhs-favorites)](https://github.com/ONEMULE/xhs-favorites/blob/main/LICENSE)
 
-Persistent-profile XiaoHongShu favorites tooling built on Playwright.
+Persistent-profile XiaoHongShu tooling with unified CLI + MCP access.
 
-`xhs-favorites` is a small toolchain for reading your own XiaoHongShu saved notes and favorite boards with a dedicated Playwright browser profile. It has two entrypoints:
+`xhs-favorites` is a self-hosted XiaoHongShu toolkit with two internal execution modes:
+
+- `api`
+  Lightweight public-state extraction for read flows when page HTML already contains usable state.
+- `playwright`
+  Persistent-profile browser automation for authenticated and high-fidelity flows.
+
+It has two public entrypoints:
 
 - `xhs-favorites`
   CLI for login, diagnostics, reading favorites, and exporting a review bundle.
@@ -67,6 +74,7 @@ Review bundle HTML:
 - Release notes: https://github.com/ONEMULE/xhs-favorites/releases/latest
 - Issues: https://github.com/ONEMULE/xhs-favorites/issues
 - Install guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/install.md
+- Capability matrix: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/capabilities.md
 - Codex setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/codex.md
 - Claude Desktop setup guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/claude-desktop.md
 - Troubleshooting guide: https://github.com/ONEMULE/xhs-favorites/blob/main/docs/troubleshooting.md
@@ -77,14 +85,30 @@ Review bundle HTML:
 
 - Dedicated persistent browser profile
   The tool keeps a separate Playwright user data directory and does not depend on ad-hoc cookie files as the primary auth path.
+- Dual-provider routing
+  Commands can route to API extraction or browser automation depending on capability requirements.
+- Home feed listing
+  Reads the recommendation feed.
+- Search
+  Searches notes through the authenticated browser route when the public page does not expose usable state.
 - Saved notes listing
   Reads your main favorites feed.
 - Favorite boards listing
   Reads your saved boards / collections.
 - Board item listing
   Reads notes inside a specific board.
-- Note detail reading
-  Opens a specific note URL and extracts structured content.
+- User notes listing
+  Reads a public user note list when available.
+- Unified note detail reading
+  Opens a specific note URL and extracts structured content through the unified router.
+- Comment reading
+  Reads comments and replies with browser fallback.
+- Interaction tools
+  Supports like / unlike, favorite / unfavorite, post comment, and reply comment.
+- Publishing entrypoints
+  Supports image-note and video-note publishing through the self-hosted browser route.
+- Creator center data entrypoints
+  Exposes dashboard, content metrics, and fan metrics collectors.
 - Diagnostics
   Detects `authenticated`, `auth_required`, and `risk_controlled` states.
 - Review bundle export
@@ -193,6 +217,30 @@ Typical result:
 }
 ```
 
+### `doctor-full`
+
+Return auth state plus the provider capability matrix.
+
+```bash
+xhs-favorites doctor-full --headless --pretty
+```
+
+### `home-feed`
+
+Read the recommendation feed.
+
+```bash
+xhs-favorites home-feed --limit 10 --pretty
+```
+
+### `search-notes`
+
+Search XiaoHongShu content.
+
+```bash
+xhs-favorites search-notes --keyword AI工具 --limit 10 --pretty
+```
+
 ### `list-notes`
 
 Read the main favorites feed.
@@ -226,6 +274,57 @@ Read one note in detail using an authenticated session.
 ```bash
 xhs-favorites note-detail --url "https://www.xiaohongshu.com/discovery/item/<note_id>?xsec_token=..." --pretty
 xhs-favorites note-detail --note-id <note_id> --xsec-token <token> --pretty
+```
+
+### `note-comments`
+
+Read note comments and replies.
+
+```bash
+xhs-favorites note-comments --url "<note_url>" --limit 20 --pretty
+```
+
+### `list-user-notes`
+
+Read a user profile note list.
+
+```bash
+xhs-favorites list-user-notes --url "https://www.xiaohongshu.com/user/profile/<profile_id>" --limit 20 --pretty
+```
+
+### Interaction
+
+```bash
+xhs-favorites like-note --url "<note_url>" --pretty
+xhs-favorites favorite-note --url "<note_url>" --pretty
+xhs-favorites post-comment --url "<note_url>" --content "写得很好" --pretty
+xhs-favorites reply-comment --url "<note_url>" --comment-id "<comment_id>" --content "收到" --pretty
+```
+
+### Publishing
+
+```bash
+xhs-favorites publish-note \
+  --title "今日分享" \
+  --content "正文内容" \
+  --image "/absolute/path/to/image.jpg" \
+  --visibility "仅自己可见" \
+  --pretty
+
+xhs-favorites publish-video \
+  --title "视频标题" \
+  --content "视频正文" \
+  --video "/absolute/path/to/video.mp4" \
+  --visibility "仅自己可见" \
+  --pretty
+```
+
+### Creator Data
+
+```bash
+xhs-favorites creator-dashboard --pretty
+xhs-favorites creator-content-metrics --limit 20 --pretty
+xhs-favorites creator-fan-metrics --pretty
 ```
 
 ### `export-review`

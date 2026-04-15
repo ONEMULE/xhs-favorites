@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.2.0 - 2026-04-15
+
+Unified multi-capability XHS MCP release.
+
+### Added
+
+- Dual-provider routing layer (`api` + `playwright`).
+- `doctor-full` capability report.
+- Home feed listing.
+- Search entrypoint.
+- User note list entrypoint.
+- Note comments entrypoint with browser fallback.
+- Like / favorite / comment / reply tools.
+- Image-note and video-note publish entrypoints.
+- Creator dashboard / content metrics / fan metrics entrypoints.
+- Capability matrix documentation.
+
+### Changed
+
+- Service layer now routes operations through providers instead of a single browser implementation.
+- README and install docs now reflect the expanded capability surface.
+
 ## v0.1.3 - 2026-04-15
 
 Installation and onboarding release.

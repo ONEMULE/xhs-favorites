@@ -7,6 +7,7 @@ import {
   DEFAULT_TIMEOUT_MS,
   PROFILE_DIR,
   USER_AGENT,
+  XHS_CREATOR_DASHBOARD_URL,
   XHS_EXPLORE_URL,
   ensureRuntimeDirs
 } from "./constants.js";
@@ -209,5 +210,21 @@ export async function openLoginBrowser({ channel = DEFAULT_CHANNEL, url = XHS_EX
       ErrorCodes.UNKNOWN,
       `playwright open exited with status ${result.status}.`
     );
+  }
+}
+
+export function resolveLoginUrl(target = "main") {
+  const normalized = String(target || "main").toLowerCase();
+  switch (normalized) {
+    case "main":
+    case "xhs":
+    case "feed":
+      return XHS_EXPLORE_URL;
+    case "creator":
+    case "creator-center":
+    case "creator_center":
+      return XHS_CREATOR_DASHBOARD_URL;
+    default:
+      return target;
   }
 }
