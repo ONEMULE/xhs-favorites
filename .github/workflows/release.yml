@@ -30,8 +30,23 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Read package version
+        run: echo "PACKAGE_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Check whether version already exists on npm
+        run: |
+          if npm view "xhs-favorites@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+            echo "NPM_ALREADY_PUBLISHED=true" >> $GITHUB_ENV
+          else
+            echo "NPM_ALREADY_PUBLISHED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Skip npm publish when version already exists
+        if: ${{ env.NPM_ALREADY_PUBLISHED == 'true' }}
+        run: echo "xhs-favorites@${PACKAGE_VERSION} is already published on npm; skipping npm publish."
+
       - name: Publish to npm
-        if: ${{ env.NODE_AUTH_TOKEN != '' }}
+        if: ${{ env.NODE_AUTH_TOKEN != '' && env.NPM_ALREADY_PUBLISHED != 'true' }}
         run: npm publish
 
       - name: Create GitHub release

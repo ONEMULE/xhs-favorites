@@ -58,4 +58,9 @@ To make it fully automatic, configure:
 
 - `NPM_TOKEN` repository secret
 
+Notes:
+
+- The token must be valid for non-interactive CI publishing.
+- If the same version already exists on npm, the workflow now skips the npm publish step instead of failing on rerun.
+
 Then pushing a `v*` tag can be used to run a release pipeline.
